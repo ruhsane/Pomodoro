@@ -172,7 +172,7 @@ class ViewController: UIViewController {
         } else {
             // If all intervals are complete, reset all.
             // ACTION: Post Notification
-            NotificationCenter.default.post(name: Notification.Name.init("Notf"), object: self)
+            NotificationCenter.default.post(name: Notification.Name("cycleDone"), object: nil)
             resetAll()
 
         }

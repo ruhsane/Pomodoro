@@ -15,14 +15,14 @@ class FirstViewController: UIViewController {
     
     deinit {
         //ACTION: Remove observers
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "Notf"), object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "cycleDone"), object: nil)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         //ACTION: Add observers
-        NotificationCenter.default.addObserver(self, selector: #selector(receivedNotification(_:)), name: NSNotification.Name(rawValue: "Notf"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(receivedNotification(_:)), name: NSNotification.Name(rawValue: "cycleDone"), object: nil)
         
     }
     
@@ -30,7 +30,7 @@ class FirstViewController: UIViewController {
         // ACTION: Update value of completed cycles
         // ACTION: Update message label
         completedCycles += 1
-        
+        messageLabel.text = "Completed Cycles: " + String(completedCycles)
     }
 }
 
