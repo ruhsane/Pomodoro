@@ -99,7 +99,7 @@ class ViewController: UIViewController {
             } else {
                 // We are in the middle of a cycle
                 // ACTION: Resume the timer.
-                runTimer()
+                startTimer()
             }
         }
     }
@@ -123,7 +123,7 @@ class ViewController: UIViewController {
     
     func startTimer() {
         //ACTION: create the timer, selector should be runTimer()
-        Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(runTimer), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(runTimer), userInfo: nil, repeats: true)
     }
     
     @objc func runTimer() {
@@ -172,8 +172,9 @@ class ViewController: UIViewController {
         } else {
             // If all intervals are complete, reset all.
             // ACTION: Post Notification
-            resetAll()
             NotificationCenter.default.post(name: Notification.Name.init("Notf"), object: self)
+            resetAll()
+
         }
     }
     
